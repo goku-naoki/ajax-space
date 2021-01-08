@@ -1,0 +1,22 @@
+.MainChat
+  .RightHeader
+    .RightHeader__leftBox
+      .RightHeader__currentGroup 
+        = @group.name
+      %ul.RightHeader__memberList
+        Member :
+        %li.RightHeader__member 
+          - @group.users.each do |user|
+            = user.name
+    = link_to edit_group_path(@group), class: "RightHeader__editBtn" do
+      Edit
+  .MessageList
+    = render @messages
+  .Footer
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+      .Form__area
+        = f.text_field :body, class: 'Form__text', placeholder: 'type a message'
+        = f.label :image, class: "Form__image" do
+          = icon('far', 'image',class: 'Form__image__icon')
+          = f.file_field :image, class: 'Form__image__file'
+      = f.submit "Send", class: "Form__submit"
