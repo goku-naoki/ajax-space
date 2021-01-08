@@ -4,7 +4,7 @@ $(function(){
     if (message.image) {
       let html = `<div class="MessageList__messageBox" data-message-id=${message.id}>
                     <div class="MessageList__name">
-                      <p>  ${message.user}</p>
+                      <p>  ${message.user_name}</p>
                       <div class="MessageList__date">
                         ${message.created_at}
                       </div>
@@ -18,7 +18,7 @@ $(function(){
     } else {
       let html = `<div class="MessageList__messageBox" data-message-id=${message.id}>
                     <div class="MessageList__name">
-                    <p>  ${message.user}</p>
+                    <p>  ${message.user_name}</p>
                       <div class="MessageList__date">
                         ${message.created_at}
                       </div>
@@ -37,7 +37,7 @@ $(function(){
     let url = $(this).attr('action')
     // console.log(this)
     $.ajax({
-      url: "url",
+      url: url,
       type: 'POST',
       data: formData,
       dataType: 'json',
